@@ -1,5 +1,6 @@
 const { PermissionFlagsBits, EmbedBuilder } = require("discord.js");
 const antiswearSchema = require("../../Models/antiswear");
+const antiswearLogSchema = require("../../Models/antiswearLogChannel");
 
 module.exports = {
     name: "messageCreate",
@@ -10,6 +11,7 @@ module.exports = {
         const guild = message.guild;
 
         let requireDB = await antiswearSchema.findOne({ _id: guild.id });
+        const logSchema = await antiswearLogSchema.findOne({ Guild: guild.id });
         if (!requireDB) return;
 
         if (requireDB.logs === false) return;
@@ -20,8 +22,8 @@ module.exports = {
             const scamlinks = scamLinks.known_links;
 
             const embed = new EmbedBuilder()
-                .setColor("0x2f3136")
-                .setDescription(`:warning: | <@${message.author.id}> has been warned for bad word usage.`)
+                .setColor(warningColor)
+                .setDescription(`\`⚠️\` **•** <@${message.author.id}> has been warned for bad word usage.`)
 
             // https://github.com/nateethegreat/Discord-Scam-Links
 
@@ -30,8 +32,8 @@ module.exports = {
 
                     await message.delete();
 
-                    // Put your log channel ID in here.
-                    const logChannel = client.channels.cache.get("LOG-CHANNEL-ID");
+                    // Put log channel ID in here.
+                    const logChannel = client.channels.cache.get(logSchema.logChannel);
 
                     // For sending message into original channel.
                     message.channel.send({ embeds: [embed] });
@@ -40,8 +42,10 @@ module.exports = {
                     logChannel.send({
                         embeds: [
                             new EmbedBuilder()
-                                .setColor("0x2f3136")
+                                .setColor(mainColor)
                                 .setDescription(`<@${message.author.id}> has been warned for bad word usage.\n\`\`\`${message.content}\`\`\``)
+                                .setFooter({ text: `User ID: ${message.author.id}` })
+                                .setTimestamp()
                         ]
                     });
                 }
