@@ -7,6 +7,31 @@ This is an anti-swear system with the options to enable and disable it for your 
 ### `⚠️` **Warning:**
 When copying over the files from this repository, remember to adjust the file paths to match the files on your bot.
 
+### `❗` **Requirements:**
+You need the antiscam schema for this command to work.
+
+**⤷ Location:** [d.js-v14-Anti-Swear-System/Models/antiscam.js](https://github.com/sharpenhead/d.js-v14-Anti-Swear-System/blob/main/Models/antiswear.js)
+
+**⤷ Location:** [d.js-v14-Anti-Swear-System/Models/antiscamLogChannel.js](https://github.com/sharpenhead/d.js-v14-Anti-Swear-System/blob/main/Models/antiswearLogChannel.js)
+
+**⤷** `📁` Place these two in the folder where you keep all your schemas.
+
+**──────────────────────**
+
+Then you need the messageCreate event.
+
+**⤷ Location:** [d.js-v14-Anti-Swear-System/Events/Client/antiscammessageCreate.js](https://github.com/sharpenhead/d.js-v14-Anti-Swear-System/blob/main/Events/Client/antiswearmessageCreate.js)
+
+**⤷** `📁` Place in `Events > Client`.
+
+**──────────────────────**
+
+Finally, download the badwords.json file or paste the contents into a new file.
+
+**⤷ Location:** [d.js-v14-Anti-Swear-System/badwords.json](https://github.com/sharpenhead/d.js-v14-Anti-Swear-System/blob/main/badwords.json)
+
+**⤷** `📁` Place outside of all the folders; where you keep your `index.js` file.
+
 ### `🔧` **Command:**
 - /setup-antiswear **➜** Allows admins to enable or disable the anti-swear system.
 
