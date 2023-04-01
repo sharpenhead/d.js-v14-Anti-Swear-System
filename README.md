@@ -5,7 +5,7 @@ This repository includes a simple anti-swear system for your Discord bot, with t
 This is an anti-swear system with the options to enable and disable it for your server, as well as the ability to log any violations in a specified channel.
 
 ### `⚠️` **Warning:**
-When copying over the files from this repository, remember to adjust the file paths to match the files on your bot.
+When copying over the files from this repository, remember to adjust the file paths to match the files on your bot. Also remember to modify the embed colors to your preference.
 
 ### `❗` **Requirements:**
 You need the antiscam schema for this command to work.
